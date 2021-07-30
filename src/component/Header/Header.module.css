@@ -1,0 +1,126 @@
+.main{
+
+    background-color:  #66a4ac;
+    /*background-size: contain;*/
+    background-size: cover;
+    background-position: center;
+    padding: 30px;
+    height: 150px;
+    position: relative;
+}
+.content{
+    display: flex;
+    align-items: center;
+
+}
+.avatarka{
+    width: 150px;
+    height: 150px;
+    display: block;
+    border-radius: 50%;
+    background-color: #003a44;
+    background-size: cover;
+
+    background-position: center;
+    flex-shrink: 0;
+
+    -webkit-box-shadow: 0 0 19px 5px rgba(13, 50, 79, 0.5);
+    -moz-box-shadow: 0 0 19px 5px rgba(13, 50, 79, 0.5);
+    box-shadow: 0 0 19px 5px rgba(13, 50, 79, 0.5);
+}
+
+.name{
+    margin-left: 30px;
+    font-size: 56px;
+    color: #fff;
+    text-shadow: #000000 0 0 5px;
+    position: relative;
+}
+.name_buttonFriend{
+    position: absolute;
+    bottom: -30px;
+    text-shadow: none;
+    font-size: 18px;
+    background-color:  #06565b;
+    padding: 3px 10px;
+    border-radius: 5px;
+    user-select: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.name_buttonFriend:hover{
+    background-color: #043639;
+}
+.name_buttonFriend_delete{
+    background-color: #740831;
+}
+.name_buttonFriend_delete:hover{
+    background-color: #580622;
+}
+.outIcon{
+    background-color: #003a44;
+    position: absolute;
+    left: 7px;
+    top: 7px;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.outIcon>img{
+    filter: invert(1);
+    width: 27px;
+}
+.outIcon::before{
+    content: "Выход";
+    position: absolute;
+    z-index: 5;
+    top: 48px;
+    color: #fff;
+    background-color: #003a44;
+    padding: 3px;
+    display: none;
+}
+.outIcon:hover{
+    background-color: #005966;
+}
+.outIcon:hover::before{
+    display: block;
+}
+
+@media (max-width: 700px){
+    .name{
+        font-size: 36px;
+        margin-left: 15px;
+    }
+    .avatarka{
+        height: 100px;
+        width: 100px;
+    }
+    .content{
+        height: 100%;
+    }
+}
+@media (max-width: 500px) {
+    .name{
+        font-size: 26px;
+        margin-left: 10px;
+    }
+    .main{
+        height: 110px;
+    }
+    .outIcon{
+        width: 35px;
+        height: 35px;
+    }
+    .outIcon>img{
+        width: 18px;
+    }
+    .name_buttonFriend{
+        font-size: 16px;
+    }
+}

@@ -1,0 +1,15 @@
+.btn{
+    color: #fff;
+   /* padding: 7px 15px;*/
+    user-select: none;
+    cursor:  pointer;
+    border-top: 2px solid transparent;
+    border-bottom: 2px solid transparent;
+    background-color: rgba(0, 58, 68, 0.5);
+    transition: all 0.3s ease;
+}
+.btn:hover{
+    border-top: 2px solid #66a4ac;
+    border-bottom: 2px solid #66a4ac;
+    background-color: transparent;
+}

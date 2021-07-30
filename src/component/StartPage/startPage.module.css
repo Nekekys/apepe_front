@@ -1,0 +1,278 @@
+.main{
+    display: flex;
+    height: 100vh;
+    color: #000;
+    position: relative;
+    overflow: hidden;
+}
+.logo{
+    /*font-family: 'Open Sans', sans-serif;*/
+    font-family: 'Comfortaa', cursive;
+    /*font-family: 'Yatra One', cursive;*/
+    font-size: 72px;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 10px;
+
+}
+.left_part{
+    flex: 0 0 50%;
+    padding: 30px;
+    background-color: #66a4ac;
+    background-image: url("../../file/images/pridePepe.png");
+    background-size: cover;
+    text-align: right;
+}
+.right_part{
+    display: flex;
+    flex: 0 0 50%;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #003a44;
+    padding: 30px;
+    color: #fff;
+}
+.right_part>p img{
+    filter: invert(1);
+    cursor: pointer;
+}
+.btn {
+    line-height: 60px;
+    height: 60px;
+    text-align: center;
+    width: 300px;
+    cursor: pointer;
+    font-size: 32px;
+    color: #FFF;
+    transition: all 0.3s;
+    position: relative;
+}
+
+
+.btn::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    opacity: 0;
+    transition: all 0.3s;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-top-style: solid;
+    border-bottom-style: solid;
+    border-top-color: rgba(255,255,255,0.5);
+    border-bottom-color: rgba(255,255,255,0.5);
+    transform: scale(0.1, 1);
+}
+
+.btn:hover::before {
+    opacity: 1;
+    transform: scale(1, 1);
+}
+.btn::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    transition: all 0.3s;
+    background-color: rgba(255,255,255,0.1);
+}
+.btn:hover::after {
+    opacity: 0;
+    transform: scale(0.1, 1);
+}
+
+.loginIn {
+
+}
+
+.checkIn{
+    margin-top: 15px;
+}
+.text{
+    margin-bottom: 30px;
+    font-size: 32px;
+    max-width: 350px;
+}
+.loginIn_Window{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 5;
+}
+.loginIn_Window_main{
+    width: 300px;
+    height: 400px;
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 15px;
+    position: relative;
+}
+.regHeight{
+    height: 500px;
+}
+.LoginIn_form_container{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    height: 100%;
+}
+.LoginIn_form_input{
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.LoginIn_form_input span{
+    font-size: 24px;
+}
+.LoginIn_form_input span:first-child{
+    font-size: 28px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+.LoginIn_form_input span>w{
+    font-family: 'Comfortaa', cursive;
+    font-size: 36px;
+}
+.input{
+    outline: none;
+    background-color: #FFF;
+    border: 1px solid #003a44;
+    border-radius: 10px;
+    font-size: 24px;
+    color: #003a44;
+    padding: 5px;
+}
+.LoginIn_input_login{
+    margin: 5px 0 20px 0;
+}
+.LoginIn_input_password{
+    margin-top: 5px;
+}
+.Form_Button{
+    margin-bottom: 10px;
+    border: none;
+    background-color: #003a44;
+    color: #fff;
+    padding: 10px 0;
+    font-size: 24px;
+    border-radius: 10px;
+    outline: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.Form_Button:hover{
+    opacity: 0.8;
+}
+.close{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
+}
+.close>img{
+    width: 25px;
+    transition: all 0.3s ease;
+}
+.close>img:hover{
+    opacity: 0.7;
+}
+.Registration_input{
+    margin-top: 15px;
+}
+
+.validate_text{
+    color: red;
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    left: 0;
+    bottom: 80px;
+}
+
+.modal_info{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 5;
+}
+.modal_info_main{
+    width: 500px;
+    height: 400px;
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 15px;
+    position: relative;
+}
+.modal_info_con{
+    font-size: 20px;
+}
+.modal_info_con>h2{
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+.modal_info_con>p{
+    color: black;
+}
+.modal_info_con>p>span{
+    cursor: pointer;
+    text-decoration: underline;
+    position: relative;
+}
+.modal_info_con>p>span:hover .modal_src{
+    display: flex;
+}
+.modal_src{
+    position: absolute;
+    left: 0;
+    background-color: #fff;
+    top: -24px;
+    display: none;
+    width: 85px;
+
+    justify-content: space-between;
+    padding: 2px;
+}
+.modal_info_con a{
+    color: black;
+    text-decoration: none;
+}
+
+@media screen and (max-width: 830px){
+    .left_part{
+        flex: 0 0 auto;
+        width: 100%;
+        text-align: center;
+    }
+    .right_part{
+        flex: 0 0 100%;
+        position: absolute;
+        width: 100%;
+        height: 100vh;
+        background-color: rgba(0, 58, 68, 0.8);
+        padding: 0;
+        align-items: center;
+        text-align: center;
+    }
+}
+@media screen and (max-width: 600px){
+    .modal_info_main{
+        width: 300px;
+
+    }
+}

@@ -1,0 +1,122 @@
+.main{
+    width: 100%;
+}
+.head{
+    margin-bottom: 15px;
+    width: 100%;
+    position: relative;
+}
+.head>input{
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid  #66a4ac;
+    outline: none;
+    color: #fff;
+    font-size: 24px;
+    width: 88%;
+    padding: 3px 10% 3px 2%;
+}
+.search_button{
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 3px 6px;
+    
+
+}
+.search_button>img{
+    height: 24px;
+    filter: invert(1);
+    transition: all 0.3s ease;
+}
+
+/*************/
+.body{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.element{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-decoration: none;
+    margin-bottom: 15px;
+}
+
+.onlineCheck{
+    position: absolute;
+}
+.avatarCon{
+    display: block;
+    background-size: cover;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    position: relative;
+    margin-right: 10px;
+
+}
+.avatarCon>span{
+    background-color: #00b1cb;
+    font-size: 16px;
+    max-height: 100px;
+    overflow: hidden;
+    text-align: center;
+
+}
+.element_name{
+    color: #fff;
+    font-size: 20px;
+    margin-right: 10px;
+}
+/************************/
+.dontPost{
+    color: rgb(170, 170, 170);
+    text-align: center;
+    font-size: 24px;
+    width: 100%;
+}
+.stelsName{
+    position: sticky;
+    padding: 3px 0;
+    top:0;
+    background-color: rgba(0, 58, 68, 0.85);
+    text-align: center;
+    font-size: 32px;
+    color: #fff;
+    z-index: 5;
+    margin-bottom: 15px;
+}
+.stelsCon{
+    display: block;
+    height: 44px;
+    margin-bottom: 15px;
+    background-color: rgba(0, 58, 68, 0.85);
+    text-align: center;
+    font-size: 32px;
+    color: #fff;
+}
+.online{
+    background-color: #00b1cb;
+    display: block;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    position: absolute;
+    right: 2px;
+    bottom: 2px;
+    border: 5px solid #06565b
+}
+.preloader{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 15px;
+}
+.preloader>img{
+    width: 100px;
+    height: 100px;
+}

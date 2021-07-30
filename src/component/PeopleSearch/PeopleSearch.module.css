@@ -1,0 +1,181 @@
+.main{
+    width: 100%;
+}
+.container{
+    width: 100%;
+}
+.searchBox{
+    margin-bottom: 15px;
+    width: 100%;
+    position: relative;
+}
+.searchBox>input{
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid  #66a4ac;
+    outline: none;
+    color: #fff;
+    font-size: 24px;
+    width: 88%;
+    padding: 3px 10% 3px 2%;
+
+    transition: all 0.3s ease;
+}
+.search_button{
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    right: 69px;
+    top: 2px;
+    cursor: pointer;
+    text-decoration: none;
+}
+.search_button>img{
+    display: none;
+}
+.search_button>span{
+    font-size: 24px;
+    color: #fff;
+
+    padding: 4px 6px 4px 12px;
+    border-left: 1px solid #66a4ac;
+
+    transition: all 0.3s ease;
+}
+.search_button>span:hover{
+    background-color: rgba(0, 58, 68, 0.5);
+}
+.backButton{
+    position: absolute;
+    font-size: 24px;
+    color: #fff;
+    right: 0px;
+    top: 36px;
+    display: inline;
+    padding: 4px 6px 4px 12px;
+    border-left: 1px solid #66a4ac;
+    cursor: pointer;
+    text-decoration: none;
+
+    transition: all 0.3s ease;
+}
+.backButton:hover{
+    background-color: rgba(0, 58, 68, 0.5);
+
+}
+.searchString{
+    margin-top: 5px;
+    font-size: 20px;
+    color: #c2dde4;
+
+}
+.dontPeople{
+    color: rgb(170, 170, 170);
+    text-align: center;
+    font-size: 24px;
+    width: 100%;
+
+    padding-top: 15px;
+}
+.preloader{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 15px;
+}
+.preloader>img{
+    width: 100px;
+    height: 100px;
+}
+/******************/
+.item{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    color: #fff;
+   margin-bottom: 10px;
+}
+.avatarContainer{
+    text-decoration: none;
+    position: relative;
+
+}
+.avatarContainer>img{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.online{
+    background-color: #00b1cb;
+    display: block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    position: absolute;
+    right: 4px;
+    bottom: 4px;
+    border: 3px solid #06565b
+}
+.nameBox{
+    margin-left: 10px;
+}
+.name{
+    font-size: 24px;
+
+    color: #fff;
+    text-decoration: none;
+}
+.addFriendButton{
+    margin-top: 5px;
+}
+.name_buttonFriend{
+
+    display: inline;
+    font-size: 16px;
+    background-color: #065b18;
+    padding: 3px 10px;
+    border-radius: 5px;
+    user-select: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.name_buttonFriend:hover{
+    background-color: #054513;
+}
+.name_buttonFriend_delete{
+    background-color: #740831;
+}
+.name_buttonFriend_delete:hover{
+    background-color: #580622;
+}
+
+@media (max-width: 576px) {
+    .search_button>img{
+        display: block;
+        width: 25px;
+        height: 25px;
+        filter: invert(1);
+        transition: all 0.3s ease;
+    }
+    .search_button>img:hover{
+        filter: invert(0.7);
+    }
+    .search_button{
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 33px;
+        height: 33px;
+        right: 2px;
+        top: 2px;
+        cursor: pointer;
+
+    }
+    .search_button>span{
+        display: none;
+    }
+}

@@ -1,0 +1,176 @@
+.container{
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 10px;
+}
+.main{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.AdminIn{
+    display: flex;
+    flex-direction: column;
+    max-width: 450px;
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 25px;
+}
+.AdminIn span{
+    font-size: 30px;
+
+}
+
+.AdminIn input{
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+.Admin_Button{
+    background-color: transparent;
+    border: none;
+    outline: none;
+    background-image: linear-gradient(to right, #f9d423 0%, #ff4e50 100%);
+    padding: 5px 0;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+.Admin_Button:hover{
+    opacity: 0.8;
+}
+
+
+/*************************/
+.main_panel{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.elem_panel{
+    background-color: #fff;
+    width: 275px;
+    height: 130px;
+    position: relative;
+    border-radius: 25px;
+    padding: 10px;
+    position: relative;
+    margin-bottom: 5px;
+}
+.elem_panel span{
+    position: absolute;
+    bottom: 10px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.elem_panel span:hover{
+    opacity: 0.8;
+}
+.elem_panel h4{
+    font-size: 20px;
+    max-width: 275px;
+    word-wrap: break-word;
+
+}
+.panel_button_del{
+    right: 10px;
+    background-color: #30cfd0;
+}
+.panel_button_change{
+    left: 10px;
+    background-color: #330867;
+    color: #fff;
+}
+.add{
+    background-color: rgba(255, 255, 255, 0.62);
+    width: 295px;
+    height: 150px;
+    position: relative;
+    border-radius: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+.add:hover{
+    background-color: rgba(255, 255, 255, 0.9);
+}
+.add img{
+    height: 60px;
+}
+/****************************************************/
+.main_add{
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 25px;
+}
+.formAdd{
+    display: flex;
+    flex-direction: column;
+}
+.formAdd span{
+    font-size: 24px;
+}
+.formAdd span:not(:first-child){
+    margin-top: 10px;
+}
+.formAdd input{
+    font-size: 20px;
+}
+.formAdd_box_con span{
+    margin-right: 5px;
+}
+.formAdd_button{
+    margin-top: 15px;
+
+    font-size: 22px;
+    cursor: pointer;
+}
+.formAdd_textArea{
+    resize: none;
+}
+
+.formAdd_select{
+    margin-top: 15px;
+    font-size: 20px;
+}
+
+.foemAdd_Genres{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.foemAdd_Genres_el{
+    padding: 5px;
+    margin: 5px;
+    border: 1px solid #000;
+    border-radius: 10px;
+}
+.formChangeGenres{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,240 @@
+.main{
+    position: relative;
+    width: 100%;
+}
+.head{
+    margin-bottom: 15px;
+    width: 100%;
+}
+.headDiv{
+    display: flex;
+    justify-content: space-between;
+}
+.head span{
+    color: #fff;
+    font-size: 28px;
+}
+.downArrow{
+    position: relative;
+    user-select: none;
+}
+.downArrow::before{
+    content: 'Перейти вниз';
+    position: absolute;
+    background-color: #fff;
+    padding: 5px;
+    border-radius: 5px;
+    right: 25px;
+    top: -35px;
+    display: none;
+}
+.downArrow:hover::before{
+    /*display: flex;*/
+}
+.downArrow img{
+    width: 35px;
+    filter: invert(1);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    user-select: none;
+}
+.downArrow img:hover{
+    opacity: 0.7;
+}
+.posts{
+
+}
+/***************************************/
+/*.answerPost{
+    display: flex;
+    color: #fff;
+    margin-bottom: 15px;
+}*/
+.answerPost{
+    display: flex;
+    flex-direction: row;
+    align-content: flex-start;
+
+    color: #fff;
+    margin-bottom: 15px;
+}
+.avatar{
+    flex-grow: 0;
+    flex-shrink: 0;
+    width: 50px;
+    height: 50px;
+    margin-right: 15px;
+    background-color: #003a44;
+    text-decoration: none;
+    border-radius: 50%;
+}
+.postBody{
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+.name{
+
+}
+.text{
+    /*word-break: break-all;*/
+    word-break: break-word;
+    font-size: 16px;
+}
+.text>a{
+    color: #cbcbcb;
+    cursor: default;
+}
+.text>a:hover{
+    text-decoration: underline;
+}
+/*.avatar{
+    display: block;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #003a44;
+    margin-right: 15px;
+
+}*/
+/*.postBody{
+    display: flex;
+    flex-direction: column;
+    word-wrap: break-word;
+}*/
+.name_text{
+    display: inline;
+    font-size: 18px;
+    color: #c2dde4;
+    font-weight: 700;
+    word-wrap: break-word;
+    text-decoration: none;
+}
+.name_time{
+    display: inline;
+    margin-left: 12px;
+    color: rgb(170, 170, 170);
+}
+.name_answer_scroll{
+    display: inline;
+    margin-left: 12px;
+    color: rgb(170, 170, 170);
+    cursor: pointer;
+    user-select: none;
+}
+.name_answer_scroll:hover{
+    text-decoration: underline;
+}
+.inputMain{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+.inputMain>span{
+    color: rgb(170, 170, 170);
+    margin-bottom: 5px;
+}
+.inputMain>span>a{
+    color: rgb(191, 191, 191);
+}
+.inputMain_close{
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+.inputMain_close>img{
+    width: 15px;
+    filter: invert(1);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+.inputMain_close>img:hover{
+    filter: invert(0.6);
+}
+
+
+.inputMain>textarea{
+    border: none;
+    border-bottom: 1px solid #fff;
+    background-color: transparent;
+    outline: none;
+    font-size: 20px;
+    color: #fff;
+    width: 100%;
+    resize: none;
+    padding: 5px;
+    box-sizing: border-box;
+
+    margin-bottom: 8px;
+}
+.inputMain>textarea::-webkit-scrollbar{
+    width: 2px;
+    background-color: transparent;
+    border-radius: 5px;
+}
+
+.inputMain>textarea::-webkit-scrollbar-thumb {
+    background: #000;
+}
+.inputMain>textarea::-webkit-scrollbar-thumb:hover {
+    opacity: 0.5;
+}
+.inputMain_button{
+    text-align: center;
+    
+}
+
+/***************************************/
+.scrollArrow{
+    z-index: 5;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    bottom: 35px;
+    right: 50px;
+    width: 50px;
+    height: 50px;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.scrollArrow img{
+    width: 25px;
+    filter: invert(1);
+    transform: rotate(180deg);
+}
+.scrollArrow:hover{
+    background-color: rgba(0, 0, 0);
+}
+.avatar{
+    position: relative;
+}
+.avatar>img{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.onlineCheck{
+    top: 35px;
+    right: 0;
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #00b1cb;
+    display: block;
+    border: 2px solid #06565b;
+}
+.preloader{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 15px;
+}
+.preloader>img{
+    width: 100px;
+    height: 100px;
+}
