@@ -2,7 +2,15 @@ import React, {useEffect, useState} from 'react';
 import {compose} from "redux";
 import {connect} from "react-redux";
 import MainApp from "./MainApp";
-import { pressLike, setAllPost, setAllPostAsync, setComment, setPost,setLike} from "../../redux/postReduser";
+import {
+    pressLike,
+    setAllPost,
+    setAllPostAsync,
+    setComment,
+    setPost,
+    setLike,
+    clearMainPost
+} from "../../redux/postReduser";
 import {withRouter} from "react-router-dom";
 
 
@@ -18,6 +26,7 @@ function MainAppContainer(props) {
                      setAllPost={props.setAllPost} setAllPostAsync={props.setAllPostAsync}
                      hostId={props.match.params.id} userData={props.userData}
                      alienPageData={props.alienPageData} preloader={props.preloader}
+                     clearMainPost={props.clearMainPost}
                      />)
 
 }
@@ -52,7 +61,7 @@ let WithRouterMainAppContainer = withRouter(MainAppContainer)
 
 export default compose(
     connect(mapStateToProps , {
-        setPost,setComment,pressLike,setAllPost,setAllPostAsync,setLike
+        setPost,setComment,pressLike,setAllPost,setAllPostAsync,setLike,clearMainPost
     })
 )(WithRouterMainAppContainer)
 

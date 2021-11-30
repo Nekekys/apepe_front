@@ -108,6 +108,19 @@
 .elem_background_check:hover{
     text-decoration: underline;
 }
+.uploadOnSmartPhone{
+    display: none;
+    visibility: hidden;
+}
+.uploadOnSmartPhone:before{
+    content: "загрузить";
+    color: #fff;
+    font-size: 30px;
+    cursor: pointer;
+    margin: 10px 0;
+    text-decoration: underline;
+    visibility: visible;
+}
 @media screen and (max-width: 500px) {
     .main{
         display: flex;
@@ -122,5 +135,11 @@
     .col_2{
         padding: 15px;
         width: auto;
+    }
+    .uploadOnSmartPhone{
+        display: block;
+    }
+    .body{
+        display: none;
     }
 }

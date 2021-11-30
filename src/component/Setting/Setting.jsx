@@ -160,6 +160,13 @@ function Setting(props) {
             e.preventDefault();
         }
     }
+    const changeFileInput = (e) =>{
+        console.log("123")
+        let file = e.target.files[0]
+        setUploadFile(file)
+        setDropUploadCheck(true)
+        console.log("123")
+    }
 
     useEffect(()=>{
         setColumn ( ()=>{
@@ -173,13 +180,14 @@ function Setting(props) {
                                     onDragLeave={event => DragLeaveFun(event)}
                                     onDragOver={event => DragStartFun(event)}
                                     onDrop={event => DropFun(event)}
-                                    className={style.darg_area}>Отпустите изображение, чтобы загурузить</div>
+                                    className={style.darg_area}>Отпустите изображение, чтобы загрузить</div>
                                 :<div
                                     onDragStart={event => DragStartFun(event)}
                                     onDragLeave={event => DragLeaveFun(event)}
                                     onDragOver={event => DragStartFun(event)}
-                                    className={style.darg_area_start}>{validate ? "Перетащите изображение, чтобы загурузить" : "Неверный формат"}</div>}
+                                    className={style.darg_area_start}>{validate ? "Перетащите изображение, чтобы загрузить" : "Неверный формат"}</div>}
                         </div>
+                        <input type="file" id="file" onChange={changeFileInput} className={style.uploadOnSmartPhone}/>
                         <img src={qwert} alt=""/>
                         {dropUploadCheck && <div className={style.button}>
                                 <div onClick={clickUploadFile} className={style.btn}>Загрузить</div>
@@ -196,13 +204,14 @@ function Setting(props) {
                                     onDragLeave={event => DragLeaveFun(event)}
                                     onDragOver={event => DragStartFun(event)}
                                     onDrop={event => DropFun(event)}
-                                    className={style.darg_area}>Отпустите изображение, чтобы загурузить</div>
+                                    className={style.darg_area}>Отпустите изображение, чтобы загрузить</div>
                                 :<div
                                     onDragStart={event => DragStartFun(event)}
                                     onDragLeave={event => DragLeaveFun(event)}
                                     onDragOver={event => DragStartFun(event)}
-                                    className={style.darg_area_start}>{validate ? "Перетащите изображение, чтобы загурузить" : "Неверный формат"}</div>}
+                                    className={style.darg_area_start}>{validate ? "Перетащите изображение, чтобы загрузить" : "Неверный формат"}</div>}
                         </div>
+                        <input type="file" id="file" onChange={changeFileInput} className={style.uploadOnSmartPhone}/>
                         <img src={qwert} alt=""/>
                         {dropUploadCheck && <div className={style.button}>
                             <div onClick={clickUploadFile} className={style.btn}>Загрузить</div>
@@ -238,7 +247,7 @@ function Setting(props) {
         })
 
 
-    },[choice,dropCheck,qwert,loginText,validate,passwordText,checkRepeatFon,props])
+    },[choice,dropCheck,qwert,loginText,validate,passwordText,checkRepeatFon,props,dropUploadCheck])
 
     const clickMenu = (name) =>{
         setChoice(name)

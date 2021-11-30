@@ -6,6 +6,7 @@ import {Link} from 'react-scroll'
 
 function AnswerPost(props) {
 
+
     const [userData,setUserData] = useState({
        // name: "имя",
      //   lastName: "фамилия"
@@ -21,12 +22,12 @@ function AnswerPost(props) {
         setUserAnswer(user.name + " " + user.lastName);
     }
 
-    useEffect( ()=>{
-        setPost()
-        if(props.data.answerCheck){
+ /*   useEffect( ()=>{
+       // setPost()
+       /!* if(props.data.answerCheck){
             setAnswerUser()
-        }
-    },[])
+        }*!/
+    },[])*/
 
     let postTime = props.data.postTime
     let dataNow = Date.now()
@@ -70,18 +71,18 @@ function AnswerPost(props) {
     return(
         <div name={props.data.id} className={style.answerPost} style={(props.backlightPostId == props.data.id ? {borderRight: "1px solid #c2dde4",background: "linear-gradient(90deg, rgba(9,9,121,0) 78%, rgba(194,221,228,1) 100%)"} : {borderRight: "1px solid transparent"})}>
             <NavLink to={"/user/"+props.data.senderID} className={style.avatar}>
-                <img src={userData && userData.avatar} alt=""/>
+                <img src={props.data.avatar} alt=""/>
                 {props.check && <span className={style.onlineCheck}></span>}
             </NavLink>
             <div className={style.postBody}>
-                <div className={style.name}><NavLink to={"/user/"+props.data.senderID} className={style.name_text}>{userData ? (userData.name + " " + userData.lastName) : "имя фамилия"}</NavLink>
+                <div className={style.name}><NavLink to={"/user/"+props.data.senderID} className={style.name_text}>{props.data.name + " " + props.data.lastName}</NavLink>
                     <div className={style.name_time}>{dataString}</div>
-                    <div onClick={()=>props.answerPostFunction(props.data.id,props.data.senderID,userData.name)} className={style.name_answer_scroll}>ответить</div>
+                    <div onClick={()=>props.answerPostFunction(props.data.id,props.data.senderID,props.data.name,props.data.lastName)} className={style.name_answer_scroll}>ответить</div>
                 </div>
                 <div className={style.text}>
                     {props.data.answerCheck  &&
                     <Link onClick={()=>props.changeIdBacklightPost(props.data.answerPostId)} smooth={true}
-                          offset={-250} to={props.data.answerPostId} duration={300}>{userAnswer + ", "}</Link>} {props.data.textPost}
+                          offset={-250} to={props.data.answerPostId} duration={300}>{props.data.nameAnswer + " " + props.data.lastNameAnswer  + ", "}</Link>} {props.data.textPost}
                 </div>
             </div>
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import {BrowserRouter, Route} from "react-router-dom";
+import {BrowserRouter, HashRouter, Route} from "react-router-dom";
 import {connect} from "react-redux";
 import {compose} from "redux";
 
@@ -31,7 +31,9 @@ class App extends React.Component {
     }
 
     async componentDidMount() {
-        let data = await axiosQweryCookies()
+        let login = localStorage.getItem("login")
+        let password = localStorage.getItem("password")
+        let data = await axiosQweryCookies(login,password)
         if(data.check){
             this.props.isLoginIn(true)
             this.props.setUSerData(data.user)
@@ -68,7 +70,7 @@ class App extends React.Component {
     render() {
 
     return (
-        <BrowserRouter basename={process.env.PUBLIC_URL}>
+        <HashRouter basename={process.env.PUBLIC_URL}>
           <div className="App">
               {this.props.isAuth ?
                   <div className="app_main">
@@ -94,7 +96,7 @@ class App extends React.Component {
               }
 
           </div>
-        </BrowserRouter>
+        </HashRouter>
     );
   }
 }

@@ -68,7 +68,26 @@
     margin: 5px 0;
     padding-bottom: 5px;
     border-right: 1px solid #66a4ac;
+
+
 }
+.postContainerForAnimate{
+    animation: show-post 0.5s forwards;
+}
+@keyframes show-post {
+    0%{
+        opacity: 0;
+        transform: translateY(-80px);
+    }
+    50%{
+
+    }
+    100%{
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
+
 .post_avatarka{
     width: 50px;
     height: 50px;

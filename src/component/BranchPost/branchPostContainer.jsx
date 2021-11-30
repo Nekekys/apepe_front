@@ -3,7 +3,13 @@ import {compose} from "redux";
 import {connect} from "react-redux";
 import BranchPost from "./branchPost";
 import {withRouter} from "react-router-dom";
-import {setAllBranchPost, setAllPostAsync, setAnswerPostDispatch, setIncCountAnswerPost} from "../../redux/postReduser";
+import {
+    deleteBranchPost,
+    setAllBranchPost,
+    setAllPostAsync,
+    setAnswerPostDispatch,
+    setIncCountAnswerPost
+} from "../../redux/postReduser";
 import {axiosGetDataUser} from "../../API/api";
 import {setUSerAsyncPage} from "../../redux/friendReduser";
 
@@ -27,14 +33,17 @@ function BranchPostContainer(props) {
     },[props.branchPostData])*/
 
     useEffect( ()=>{
-
         for(let i = 0; i < props.postData.length; i++){
             if(props.match.params.postId == props.postData[i].id ){
                 setIndex(i)
             }
         }
     },[props.postData])
-
+    useEffect( ()=>{
+        return ()=>{
+            props.deleteBranchPost()
+        }
+    },[])
 
     return (
         <BranchPost postId={props.match.params.postId} post={props.postData[index]}
@@ -62,7 +71,7 @@ let WithRouterBranchPostContainer = withRouter(BranchPostContainer)
 
 export default compose(
     connect(mapStateToProps , {
-        setAnswerPostDispatch,setAllPostAsync,setAllBranchPost,setIncCountAnswerPost
+        setAnswerPostDispatch,setAllPostAsync,setAllBranchPost,setIncCountAnswerPost,deleteBranchPost
     })
 )(WithRouterBranchPostContainer)
 

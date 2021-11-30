@@ -1,7 +1,7 @@
 import * as axios from "axios";
 
 const instance = axios.create({
-    baseURL: "https://fierce-sierra-39213.herokuapp.com/",
+    baseURL: "https://evening-headland-35927.herokuapp.com/",//"https://evening-headland-35927.herokuapp.com/",//"http://localhost:3001/",//
     responseType: "text"
 });
 
@@ -16,21 +16,14 @@ export const  axiosLoginIn = (login,password) =>{
     return dat
 }
 
-export const  axiosQweryCookies = () =>{
-    let dat = instance.get('/cookie',{withCredentials: true})   //withCredentials: true - для куки
+export const  axiosQweryCookies = (login,password) =>{
+    let dat = instance.post('/cookie',{login,password})   //withCredentials: true - для куки
         .then(function (response) {
             return response.data
         })
     return dat
 }
 
-export const  axiosLoginOut = (login,password) =>{
-    let dat = instance.get('/LoginOut',{withCredentials: true})
-        .then(function (response) {
-            return response.data
-        })
-    return dat
-}
 
 export const  axsiosPostReg = (login, password, email,name, lastName) =>{
     let dat = instance.post('/registration', {
@@ -199,4 +192,16 @@ export  const pepeNeuralWord = (word) =>{
             return response.data
         })
     return data
+}
+
+
+
+export const  axiosClearNotification = (id) =>{
+    let dat = instance.post('/clearNotification', {
+        id: id
+    })
+        .then(function (response) {
+            return response.data
+        })
+    return dat
 }

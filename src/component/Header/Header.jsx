@@ -1,12 +1,17 @@
 import React, {useEffect, useState} from 'react';
 import style from './Header.module.css'
 import outIcon from '../../file/images/logout.svg'
-import {axiosLoginOut} from "../../API/api";
+import bell from "../../file/images/bell.svg"
+import {NavLink} from "react-router-dom";
 
 function Header(props) {
 
+   
+
     const [check,setCheck] = useState(false)
     const [checkFriend,setCheckFriend] = useState(false)
+
+    const [bellOpen,setBellOpen] = useState(false)
 
     let test1 = false; // user page
     let test2 = false;
@@ -76,7 +81,9 @@ function Header(props) {
 
 
     const onOutButtonClick = async () =>{
-        let result = await axiosLoginOut()
+        //let result = await axiosLoginOut()
+        localStorage.removeItem("login")
+        localStorage.removeItem("password")
         props.isLoginIn(false)
         props.clearFriendState()
         props.changeOnlineUser(props.userData._id,false)
@@ -86,7 +93,38 @@ function Header(props) {
         props.pressChangeFriend(props.userData._id,props.hostPageUserData._id)
     }
 
+    const changeBellOpen = () =>{
+        setBellOpen(!bellOpen)
+        if(props.userData.notification.countNotification > 0){
+            props.clearNotification(props.userData._id)
+        }
+    }
 
+
+
+    let bellArr
+    if(props.userData.notification){
+        bellArr = props.userData.notification.arrayNotification.map(e =>{
+            switch (e.type) {
+                case "like":
+                    return <NavLink to={"/"} className={style.item} >
+                        <NavLink className={style.item_link} to={"/user/" + e.id}>{e.name + " " + e.lastName}</NavLink> поставил(а) вам лайк
+                    </NavLink>
+                case "comment":
+                    return <NavLink to={"/branchPost/"+props.userData._id+"/"+e.idPost} className={style.item}>
+                        <NavLink className={style.item_link} to={"/user/"+ e.id}>{e.name + " " + e.lastName}</NavLink> прокомментировал(а) вашу запись
+                    </NavLink>
+                case "addFriend":
+                    return <NavLink to={"/user/" + e.id} className={style.item} >
+                        <NavLink className={style.item_link} to={"/user/" + e.id}>{e.name + " " + e.lastName}</NavLink> добавил(а) вас в друзья
+                    </NavLink>
+                case "answer":
+                    return <NavLink to={"/branchPost/"+e.id+"/"+e.idPost} className={style.item}>
+                        <NavLink className={style.item_link} to={"/user/"+ e.idHost}>{e.name + " " + e.lastName}</NavLink> ответил(а) вам
+                    </NavLink>
+            }
+        })
+    }
 
     return(
         <div className={style.main} style={(
@@ -106,6 +144,15 @@ function Header(props) {
         {/*<div className={style.main} style={({backgroundImage: `url("https://cdn.igromania.ru/mnt/news/c/5/a/d/4/0/74239/f1332090f94100aa_1200xH.jpg") `})}>*/}
             <div onClick={onOutButtonClick} className={style.outIcon}>
                 <img src={outIcon} alt="out"/>
+            </div>
+            <div onClick={changeBellOpen} className={style.bellContainer} style={(bellOpen ? {borderBottomLeftRadius: '0%',borderBottomRightRadius: '0%'} : {borderBottomLeftRadius: '15px',borderBottomRightRadius: '15px'})}>
+                <img src={bell} alt="bell"/>
+                {props.userData.notification && (props.userData.notification.countNotification > 0 && <span className={style.bellCount}>{props.userData.notification.countNotification}</span>)}
+            </div>
+            <div  style={(bellOpen ? {display: 'flex'} : {display: 'none'})} className={style.bellHiddenContainer}>
+                {props.userData.notification && (props.userData.notification.arrayNotification.length == 0 && <span className={style.nofincNot}>оповещений нет</span>)}
+
+                {bellArr}
             </div>
             <div className={style.content}>
                 {check ?

@@ -1,5 +1,5 @@
 import {
-    axiosAddOrRemoveFriend,
+    axiosAddOrRemoveFriend, axiosClearNotification,
     axiosSetOnline,
     changeCheckRepeatBackgroundDB, changeLoginWithDB, changePasswordWithDB, checkOnlineUserWithNode,
     setUploadAvatarDB,
@@ -16,6 +16,7 @@ const CHANGE_BACKGROUND = 'CHANGE_BACKGROUND'
 const CHANGE_CHECK_REPEAT = 'CHANGE_CHECK_REPEAT'
 const CHANGE_LOGIN = 'CHANGE_LOGIN'
 const CHANGE_PASSWORD = 'CHANGE_PASSWORD'
+const CLEAR_NOTIFICATION = 'CLEAR_NOTIFICATION'
 
 
 let initialState = {
@@ -122,6 +123,17 @@ const authReducer = (state = initialState, action) =>  {
                     password: action.password
                 }
             }
+        case CLEAR_NOTIFICATION:
+            return {
+                ...state,
+                user: {
+                    ...state.user,
+                    notification: {
+                        ...state.user.notification,
+                        countNotification: 0
+                    }
+                }
+            }
         default:
             return state;
     };
@@ -174,6 +186,11 @@ export let changeLogin = (login) =>{
         type: CHANGE_LOGIN,login
     }
 }
+export let clearNotificationInState = () =>{
+    return {
+        type: CLEAR_NOTIFICATION
+    }
+}
 export let changePassword = (password) =>{
     return {
         type: CHANGE_PASSWORD,password
@@ -205,7 +222,7 @@ export let changeUserAvatar = (userId,file) =>{
 export let changeUserBackground = (userId,file) =>{
     return async (dispatch) => {
         let data = await setUploadBackgroundDB(userId,file)
-        console.log(data)
+
         dispatch(changeBackground(data))
     }
 }
@@ -222,7 +239,7 @@ export let changeLoginAsync = (userId,login) =>{
     return async (dispatch) => {
 
         let data = await changeLoginWithDB(userId,login)
-
+        localStorage.setItem("login",login)
         dispatch(changeLogin(login))
     }
 }
@@ -230,7 +247,7 @@ export let changePasswordAsync = (userId,password) =>{
     return async (dispatch) => {
 
         let data = await changePasswordWithDB(userId,password)
-
+        localStorage.setItem("password",password)
         dispatch(changePassword(password))
     }
 }
@@ -241,4 +258,13 @@ export let checkOnlineUser = (userId) =>{
 
     }
 }
+
+export let clearNotification = (id) =>{
+    return async (dispatch) => {
+
+        let data = await axiosClearNotification(id)
+        dispatch(clearNotificationInState())
+    }
+}
+
 export  default authReducer;

@@ -9,7 +9,8 @@ const PRESS_LIKE = 'PRESS_LIKE'
 const SET_ALL_BRANCH_POST = 'SET_ALL_BRANCH_POST'
 const SET_ALL_MAIN_PAGE_POST = 'SET_ALL_MAIN_PAGE_POST'
 const SET_INC_COUNT_ANSWER_POST = 'SET_INC_COUNT_ANSWER_POST'
-
+const DELETE_BRANCH_POSTS = 'DELETE_BRANCH_POSTS'
+const CLEAR_MAIN_POST = 'CLEAR_MAIN_POST'
 
 let initialState = {
     mainPagePost: [],
@@ -95,10 +96,28 @@ const postReducer = (state = initialState, action) =>  {
             }
 
         case SET_ANSWER_POST:
+            let postNew
+            if(action.post.answerCheck){
+                postNew = {
+                    ...action.post,
+                    name: action.hostData.name,
+                    lastName: action.hostData.lastName,
+                    avatar: action.hostData.avatar,
+                    nameAnswer:action.answerData.name,
+                    lastNameAnswer:action.answerData.lastName
+                }
+            }else {
+                postNew = {
+                    ...action.post,
+                    name: action.hostData.name,
+                    lastName: action.hostData.lastName,
+                    avatar: action.hostData.avatar
+                }
+            }
 
             return {
                 ...state,
-                branchPost: [...state.branchPost, action.post]
+                branchPost: [...state.branchPost, postNew]
             }
         case SET_ALL_MAIN_PAGE_POST:
             if(action.posts){
@@ -138,6 +157,16 @@ const postReducer = (state = initialState, action) =>  {
                     }
                 })
             }
+        case DELETE_BRANCH_POSTS:
+            return {
+                ...state,
+                branchPost: []
+            }
+        case CLEAR_MAIN_POST:
+            return {
+                ...state,
+                mainPagePost: []
+            }
         default:
             return state;
     };
@@ -152,7 +181,11 @@ export let setPostDispatch = (post) =>{
         post
     }
 }
-
+export let deleteBranchPost = () =>{
+    return {
+        type: DELETE_BRANCH_POSTS
+    }
+}
 
 
 export let setComment = (text,userId,id) =>{
@@ -167,6 +200,11 @@ export let pressLike = (postId,userId,data) =>{
         postId,userId,data
     }
 }
+export let clearMainPost = () =>{
+    return {
+        type: CLEAR_MAIN_POST
+    }
+}
 
 export let setLike = (idUser,idPost,idHost) =>{
     return async (dispatch) => {
@@ -175,10 +213,10 @@ export let setLike = (idUser,idPost,idHost) =>{
         dispatch(pressLike(idUser,idPost,data.check))
     }
 }
-export let setAnswerPost = (post) =>{
+export let setAnswerPost = (post,hostData,answerData) =>{
     return {
         type: SET_ANSWER_POST,
-        post
+        post,hostData,answerData
     }
 }
 export let setAllPost = (posts) =>{
@@ -226,7 +264,7 @@ export let setPost  = (text,id) =>{
     }
 }
 
-export let setAnswerPostDispatch  = (text,userId,postId,hostId,answerCheck,answerId,answerUserId) =>{
+export let setAnswerPostDispatch  = (text,userId,postId,hostId,answerCheck,answerId,answerUserId,hostData,answerData) =>{
     return async (dispatch) => {
         let post
         let time = Date.now()
@@ -260,7 +298,7 @@ export let setAnswerPostDispatch  = (text,userId,postId,hostId,answerCheck,answe
        //console.log("user: " + userId ,"host: "+ hostId)
         let data = await setBranchPostDB(post,postId,hostId)
         let count = await countMainPost(postId,hostId)
-        dispatch(setAnswerPost(post))
+        dispatch(setAnswerPost(post,hostData,answerData))
     }
 }
 

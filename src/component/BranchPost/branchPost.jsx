@@ -1,7 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import style from './branchPost.module.css'
 import Post from "../MainApp/Post/Post";
-import arrowDown from '../../file/images/download.svg'
+//import arrowDown from '../../file/images/download.svg'
+
 import close from '../../file/images/closeIcon.svg'
 import AnswerPost from "./AnswerPost/AnswerPost";
 import {Link, animateScroll as scroll} from 'react-scroll'
@@ -16,7 +17,6 @@ import {setAllPostAsync} from "../../redux/postReduser";
 function BranchPost(props) {
 
 
-
     const [scrollCheck,scrollCheckSet] = useState(false)
 
     const [textUnderInput,setTextUnderInput] = useState('Написать в ветку')
@@ -29,7 +29,7 @@ function BranchPost(props) {
     const [valid,setValid] = useState(false)
 
     const [backlightPostId,setBacklightPostId] = useState(0)
-
+    const [answerData,setAnswerData] = useState({})
 
 
     const [preloader,setPreloader] = useState(true)
@@ -48,7 +48,7 @@ function BranchPost(props) {
 
 
     useEffect(()=>{
-        console.log(props.branchPostData)
+
         if((props.post)){
             if((props.branchPostData.length > 0)||props.post.countAnswer == 0){
                 setPreloader(false)
@@ -62,7 +62,7 @@ function BranchPost(props) {
 
 
 
-    const answerPostFunction = (postId,userId,name) =>{
+    const answerPostFunction = (postId,userId,name,lastName) =>{
 
         scroll.scrollToBottom();
         if(postId != props.post.id){
@@ -70,6 +70,9 @@ function BranchPost(props) {
             setIdReplyUser(userId)
             setIdReplyUserName(name)
             setReplyToTheChatCheck(true)
+            setAnswerData({
+                name,lastName
+            })
             setTextUnderInput('Написать в ответ')
         }else{
             setIdReply(0)
@@ -85,7 +88,7 @@ function BranchPost(props) {
 
         let result = textPostValidation(textArea)
         if(result.boo){
-            props.setAnswerPostDispatch(result.textWithoutSpaceReverse,props.userData._id,props.postId,props.userId,replyToTheChatCheck,idReply,idReplyUser)
+            props.setAnswerPostDispatch(result.textWithoutSpaceReverse,props.userData._id,props.postId,props.userId,replyToTheChatCheck,idReply,idReplyUser,props.userData,answerData)
             props.setIncCountAnswerPost(props.postId)
             scroll.scrollToBottom(50);
         }else {
@@ -119,7 +122,7 @@ function BranchPost(props) {
         answerPostObj = props.branchPostData.map( elem => {
             let check = (props.userData._id == elem.senderID)
             k++
-            return <AnswerPost  backlightPostId={backlightPostId} check={check}
+            return <AnswerPost key={k}  backlightPostId={backlightPostId} check={check}
                                answerPostFunction={answerPostFunction}
                                data={elem} changeIdBacklightPost={changeIdBacklightPost}/>
         })
@@ -135,14 +138,14 @@ function BranchPost(props) {
         <div className={style.main} name="target_scroll_up">
             {scrollCheck &&
                 <Link to="target_scroll_up" className={style.scrollArrow} spy={true} smooth={true} duration= {500} offset={-250}>
-                    <img src={arrowDown} alt="up"/>
+                    <img src={"https://image.flaticon.com/icons/png/512/892/892499.png"} alt="up"/>
                 </Link>
             }
             <div className={style.head}>
                 <div className={style.headDiv}>
                     <span>Ветка</span>
                     <Link spy={true} smooth={true} duration= {500} to="target_scroll"
-                          className={style.downArrow}><img src={arrowDown} alt="down"/></Link>
+                          className={style.downArrow}><img src={"https://image.flaticon.com/icons/png/512/892/892499.png"} alt="down"/></Link>
                 </div>
                 {props.post && (
                     props.hostData._id != props.userId ?

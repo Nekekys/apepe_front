@@ -79,7 +79,7 @@ function StartPage(props) {
 
         if(e.login && e.password){
             if(e.login.length < 4 || e.password.length < 4 ){
-                setValidText('Добавтьте больше символов')
+                setValidText('Добавьте больше символов')
                 //e.login = ''
             }else{
                 //отправить
@@ -91,6 +91,8 @@ function StartPage(props) {
                 }else {
                     props.setUSerData(check.user)
                     props.changeOnlineUser(check.user._id,true)
+                    localStorage.setItem("login",e.login)
+                    localStorage.setItem("password",e.password)
                 }
                 props.isLoginIn(check.check)
             }
@@ -107,14 +109,16 @@ function StartPage(props) {
                 if(check.check){
                     props.isLoginIn(check.check)
                     props.setUSerData(check.user)
+                    localStorage.setItem("login",e.login)
+                    localStorage.setItem("password",e.password)
                 }else{
-                    setValidText(check.err)
+                    setValidTextReg(check.err)
                 }
             }else{
-                setValidText('Добавтьте больше символов')
+                setValidTextReg('Добавьте больше символов(более трех)')
             }
         }else{
-            setValidText('Заполните все поля')
+            setValidTextReg('Заполните все поля')
         }
     }
 

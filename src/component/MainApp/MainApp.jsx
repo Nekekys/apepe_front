@@ -33,6 +33,11 @@ function MainApp(props) {
         }
     },[props.userId])
 
+    useEffect( ()=>{
+        return ()=>{
+            props.clearMainPost()
+        }
+    },[])
 
     const showModal = (e)=>{
         setId(e)
@@ -62,7 +67,7 @@ function MainApp(props) {
 
             let dataUser = (!props.hostId) ?  props.userData :  props.alienPageData
 
-            return <div>
+            return <div className={style.postContainerForAnimate}>
                 <Post hostId={props.hostId} userData={dataUser} reply={true} modal={showModal} data={e} />
                 <div className={style.podPost}>
                     {checkLike ?
