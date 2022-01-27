@@ -76,15 +76,15 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 45px;
-    height: 45px;
+    width: 44px;
+    height: 44px;
     position: absolute;
     right: 7px;
     border-radius: 15px;
     top: 7px;
     cursor: pointer;
     transition: all 0.3s ease;
-
+    z-index: 11;
 }
 .bellContainer>img{
     width: 27px;
@@ -119,12 +119,13 @@
     width: 320px;
     position: absolute;
     right: 7px;
-    top: 52px;
+    top: 7px;
     background-image: linear-gradient(to bottom, #003a44, #00414a, #014850, #034f56, #06565b);
     border-bottom: 2px solid #66a4ac;
     z-index: 10;
     max-height: 350px;
     overflow-y: auto;
+    transition: all 0.3s ease;
 }
 .bellHiddenContainer::-webkit-scrollbar-track {border-radius: 8px;}
 .bellHiddenContainer::-webkit-scrollbar {width: 10px; background-image: linear-gradient(to bottom, #003a44, #00414a, #014850, #034f56, #06565b);}
@@ -134,6 +135,9 @@
     transition: all 0.3s ease;
 }
 .bellHiddenContainer:hover::-webkit-scrollbar-thumb {background-color: #06565b;}
+.bellHiddenContainer>span{
+    border-bottom: 1px solid #66a4ac;
+}
 .bellCount{
     position: absolute;
     right: -3px;
@@ -203,6 +207,6 @@
         width: 18px;
     }
     .name_buttonFriend{
-        font-size: 16px;
+        font-size: 13px;
     }
 }

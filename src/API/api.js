@@ -2,6 +2,7 @@ import * as axios from "axios";
 
 const instance = axios.create({
     baseURL: "https://evening-headland-35927.herokuapp.com/",//"https://evening-headland-35927.herokuapp.com/",//"http://localhost:3001/",//
+    //baseURL: "http://localhost:3001/",
     responseType: "text"
 });
 
@@ -93,8 +94,15 @@ export const  axiosSetOnline = (userId,check) =>{
 }
 
 export const setBranchPostDB = (post,branchId,userId) =>{
-
     let data = instance.post(`/setBranchPost/${userId}/${branchId}`, {post})
+        .then(function (response) {
+            return response.data
+        })
+    return data
+}
+
+export const subscriptionBranchPostDB = (branchId,userId) =>{
+    let data = instance.get(`/subscriptionBranchPost/${userId}/${branchId}`)
         .then(function (response) {
             return response.data
         })

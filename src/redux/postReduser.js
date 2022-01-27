@@ -1,4 +1,12 @@
-import {axiosGetPost, countMainPost, getAllBranchPostDB, pressLikePost, setBranchPostDB, setPostDB} from "../API/api";
+import {
+    axiosGetPost,
+    countMainPost,
+    getAllBranchPostDB,
+    pressLikePost,
+    setBranchPostDB,
+    setPostDB,
+    subscriptionBranchPostDB
+} from "../API/api";
 import actions from "redux-form/lib/actions";
 
 const SET_COMMENT = 'SET_COMMENT';
@@ -11,6 +19,7 @@ const SET_ALL_MAIN_PAGE_POST = 'SET_ALL_MAIN_PAGE_POST'
 const SET_INC_COUNT_ANSWER_POST = 'SET_INC_COUNT_ANSWER_POST'
 const DELETE_BRANCH_POSTS = 'DELETE_BRANCH_POSTS'
 const CLEAR_MAIN_POST = 'CLEAR_MAIN_POST'
+
 
 let initialState = {
     mainPagePost: [],
@@ -247,6 +256,7 @@ export let setIncCountAnswerPost = (id) =>{
     }
 }
 
+
 export let setPost  = (text,id) =>{
     return async (dispatch) => {
         let time = Date.now()
@@ -298,7 +308,7 @@ export let setAnswerPostDispatch  = (text,userId,postId,hostId,answerCheck,answe
        //console.log("user: " + userId ,"host: "+ hostId)
         let data = await setBranchPostDB(post,postId,hostId)
         let count = await countMainPost(postId,hostId)
-        dispatch(setAnswerPost(post,hostData,answerData))
+        //dispatch(setAnswerPost(post,hostData,answerData))
     }
 }
 

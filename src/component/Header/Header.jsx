@@ -145,12 +145,17 @@ function Header(props) {
             <div onClick={onOutButtonClick} className={style.outIcon}>
                 <img src={outIcon} alt="out"/>
             </div>
-            <div onClick={changeBellOpen} className={style.bellContainer} style={(bellOpen ? {borderBottomLeftRadius: '0%',borderBottomRightRadius: '0%'} : {borderBottomLeftRadius: '15px',borderBottomRightRadius: '15px'})}>
+            <div onClick={changeBellOpen} className={style.bellContainer} style={(bellOpen ? {borderRadius: '0', borderLeft: '1px solid #66a4ac', borderBottom: '1px solid #66a4ac'} : {borderRadius: '15px'})}>
                 <img src={bell} alt="bell"/>
                 {props.userData.notification && (props.userData.notification.countNotification > 0 && <span className={style.bellCount}>{props.userData.notification.countNotification}</span>)}
             </div>
             <div  style={(bellOpen ? {display: 'flex'} : {display: 'none'})} className={style.bellHiddenContainer}>
-                {props.userData.notification && (props.userData.notification.arrayNotification.length == 0 && <span className={style.nofincNot}>оповещений нет</span>)}
+                {props.userData.notification &&
+                    (props.userData.notification.arrayNotification.length == 0 ?
+                        <span className={style.nofincNot}>оповещений нет</span>
+                        :
+                        <span className={style.nofincNot}>Оповещения: {props.userData.notification.arrayNotification.length} </span>
+                    )}
 
                 {bellArr}
             </div>

@@ -10,8 +10,8 @@ import {
     setAnswerPostDispatch,
     setIncCountAnswerPost
 } from "../../redux/postReduser";
-import {axiosGetDataUser} from "../../API/api";
-import {setUSerAsyncPage} from "../../redux/friendReduser";
+import {axiosGetDataUser, subscriptionBranchPostDB} from "../../API/api";
+
 
 
 function BranchPostContainer(props) {
@@ -28,9 +28,7 @@ function BranchPostContainer(props) {
         }
     },[props.userData._id])
 
-   /* useEffect( ()=>{
 
-    },[props.branchPostData])*/
 
     useEffect( ()=>{
         for(let i = 0; i < props.postData.length; i++){
@@ -40,10 +38,22 @@ function BranchPostContainer(props) {
         }
     },[props.postData])
     useEffect( ()=>{
+        subscribable()
         return ()=>{
             props.deleteBranchPost()
         }
     },[])
+
+    const subscribable = async () => {
+        try {
+            //await axios.get(`http://localhost:3001/subscriptionBranchPost/${props.match.params.userId}/${props.match.params.postId}`)
+            let post = await subscriptionBranchPostDB(props.match.params.userId,props.match.params.postId)
+            props.setAllBranchPost(props.match.params.userId,props.match.params.postId)
+            await subscribable()
+        }catch (e) {
+           setTimeout(()=> subscribable(), 1000)
+        }
+    }
 
     return (
         <BranchPost postId={props.match.params.postId} post={props.postData[index]}
@@ -71,7 +81,8 @@ let WithRouterBranchPostContainer = withRouter(BranchPostContainer)
 
 export default compose(
     connect(mapStateToProps , {
-        setAnswerPostDispatch,setAllPostAsync,setAllBranchPost,setIncCountAnswerPost,deleteBranchPost
+        setAnswerPostDispatch,setAllPostAsync,setAllBranchPost,
+        setIncCountAnswerPost,deleteBranchPost
     })
 )(WithRouterBranchPostContainer)
 

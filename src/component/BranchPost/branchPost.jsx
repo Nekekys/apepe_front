@@ -48,7 +48,6 @@ function BranchPost(props) {
 
 
     useEffect(()=>{
-
         if((props.post)){
             if((props.branchPostData.length > 0)||props.post.countAnswer == 0){
                 setPreloader(false)
@@ -59,7 +58,6 @@ function BranchPost(props) {
             setPreloader(true)
         }
     },[props])
-
 
 
     const answerPostFunction = (postId,userId,name,lastName) =>{
