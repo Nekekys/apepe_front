@@ -31,9 +31,8 @@ class App extends React.Component {
     }
 
     async componentDidMount() {
-        let login = localStorage.getItem("login")
-        let password = localStorage.getItem("password")
-        let data = await axiosQweryCookies(login,password)
+        let token = localStorage.getItem("token")
+        let data = await axiosQweryCookies(token)
         if(data.check){
             this.props.isLoginIn(true)
             this.props.setUSerData(data.user)

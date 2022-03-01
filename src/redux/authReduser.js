@@ -22,11 +22,8 @@ const CLEAR_NOTIFICATION = 'CLEAR_NOTIFICATION'
 let initialState = {
     authData: {
         /*name: 213, urlAvatar: 123, id: 2*/
-
-
     },
     user: {
-
     },
     isAuth: true
     /*followingInProgress: [1,2]*/
@@ -254,7 +251,7 @@ export let changePasswordAsync = (userId,password) =>{
 export let checkOnlineUser = (userId) =>{
     return async (dispatch) => {
 
-        let data = await checkOnlineUserWithNode(userId)
+        await checkOnlineUserWithNode(userId)
 
     }
 }
@@ -262,7 +259,7 @@ export let checkOnlineUser = (userId) =>{
 export let clearNotification = (id) =>{
     return async (dispatch) => {
 
-        let data = await axiosClearNotification(id)
+        await axiosClearNotification(id)
         dispatch(clearNotificationInState())
     }
 }

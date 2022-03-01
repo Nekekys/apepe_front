@@ -91,8 +91,7 @@ function StartPage(props) {
                 }else {
                     props.setUSerData(check.user)
                     props.changeOnlineUser(check.user._id,true)
-                    localStorage.setItem("login",e.login)
-                    localStorage.setItem("password",e.password)
+                    localStorage.setItem("token",check.token)
                 }
                 props.isLoginIn(check.check)
             }
@@ -109,8 +108,7 @@ function StartPage(props) {
                 if(check.check){
                     props.isLoginIn(check.check)
                     props.setUSerData(check.user)
-                    localStorage.setItem("login",e.login)
-                    localStorage.setItem("password",e.password)
+                    localStorage.setItem("token",check.token)
                 }else{
                     setValidTextReg(check.err)
                 }

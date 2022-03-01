@@ -1,7 +1,7 @@
 import * as axios from "axios";
 
 const instance = axios.create({
-    baseURL: "https://evening-headland-35927.herokuapp.com/",//"https://evening-headland-35927.herokuapp.com/",//"http://localhost:3001/",//
+    baseURL: "http://localhost:3001/",//"https://evening-headland-35927.herokuapp.com/",//"http://localhost:3001/",//
     //baseURL: "http://localhost:3001/",
     responseType: "text"
 });
@@ -17,8 +17,8 @@ export const  axiosLoginIn = (login,password) =>{
     return dat
 }
 
-export const  axiosQweryCookies = (login,password) =>{
-    let dat = instance.post('/cookie',{login,password})   //withCredentials: true - для куки
+export const  axiosQweryCookies = (token) =>{
+    let dat = instance.post('/cookie',{token})   //withCredentials: true - для куки
         .then(function (response) {
             return response.data
         })
